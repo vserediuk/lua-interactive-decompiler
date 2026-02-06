@@ -5,7 +5,7 @@
 		<link rel="stylesheet" href="css/style.css" type="text/css">
 		<link rel="stylesheet" href="css/code-lua.css">
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
-		<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/languages/lua.min.js"></script>-->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/languages/lua.min.js"></script>
 	</head>
 	<body>
 		<div class="splashscreen" style="opacity: 0%;">
@@ -16,9 +16,9 @@
 			</div>
 		</div>
 		<div class="main-container">
-		<!-- HEADER
+		<!-- HEADER -->
 		 	<div class="notepad-header"></div>
-		-->	
+			
 			<div class="notepad-body">
 				<div class="notepad-script">
 					<div class="notepad-lines">
@@ -29,7 +29,7 @@
 				<div class="notepad-lasm"></div>
 			</div>
 		</div>
-		<!-- FOOTER
+		<!-- F1OOTER -->
 			<div class="notepad-footer">
 				<div class="notepad-console">
 					<div class="console-output"></div>
@@ -37,7 +37,7 @@
 					<div class="console-footer"></div>
 				</div>
 			</div>
-		-->
+		
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 		<script defer src="js/inspector.js"></script>
 		<script defer src="js/ui.js"></script>
@@ -104,12 +104,12 @@
 					})
 
 					// invoke highlight.js
-					//hljs.highlightAll();
+					hljs.highlightAll();
 				});
 			};
 			buildInspector()
 
-			//$(".main-container").append(ui.showLoader());
+			$(".main-container").append(ui.showLoader());
 
 		});
 		</script>
