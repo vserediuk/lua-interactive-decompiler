@@ -4,7 +4,7 @@
 		<title>Interactive Lua Decompiler (Langey edition)</title>
 		<link rel="stylesheet" href="css/style.css" type="text/css">
 		<link rel="stylesheet" href="css/code-lua.css">
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/languages/lua.min.js"></script>
 	</head>
 	<body>
@@ -24,7 +24,7 @@
 					<div class="notepad-lines">
 						<ul></ul>
 					</div>
-					<pre class="lasm-script"></pre>
+					<pre><code class="lasm-script language-lua"></code></pre>
 				</div>
 				<div class="notepad-lasm"></div>
 			</div>
@@ -113,5 +113,33 @@
 
 		});
 		</script>
-	</body>
+	
+<script>
+function loadFromFile(file){
+    const reader = new FileReader();
+    reader.onload = e => {
+        try{
+            const data = JSON.parse(e.target.result);
+            inspector.initFromData(data, function(){
+                $(".notepad-lasm").empty().append(inspector.buildInspector().addClass("inspector-main"));
+                $("code.lasm-script").empty().append(inspector.writeFunc(0));
+                hljs.highlightAll();
+            });
+        }catch(err){
+            alert("Invalid file format");
+        }
+    };
+    reader.readAsText(file);
+}
+
+document.addEventListener("dragover", e => e.preventDefault());
+document.addEventListener("drop", e => {
+    e.preventDefault();
+    if(e.dataTransfer.files.length){
+        loadFromFile(e.dataTransfer.files[0]);
+    }
+});
+</script>
+
+</body>
 </html>

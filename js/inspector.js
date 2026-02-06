@@ -1,4 +1,4 @@
-let inspector = function (){
+window.inspector = function (){
 	let inspectorObjects;
 	let funcs;
 	let lines;
@@ -206,7 +206,8 @@ let inspector = function (){
 		return _parseScript(funcs[index])
 	}
 	
-	return {
+	function initFromData(data, callback){ inspectorObjects = data; callback(); }
+return {
 		init: _init,
 		parseScript: _parseScript,
 		parseFunc: _parseFunc,
